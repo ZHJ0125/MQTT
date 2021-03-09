@@ -1,1 +1,9 @@
-待编写
+PRO_ID = "407495"               # 产品ID
+DEV_ID = "690805501"            # 设备ID
+DEV_NAME = "RaspberryPi"        # 设备名
+KEY = "XTxOJG5WaD89cmQ6Yl8xQWkkWy5BbDVyRlByYGxyUnQ="        # 设备Key
+ACCESS_KET = "f/WWN59X1ePhP7phxaSa6LRSqRjKywsIbiASyPi4isY=" # AccessKey
+HOST = "mqttstls.heclouds.com"  # 加密接口地址
+PORT = "8883"                   # 加密端口
+HOST = "mqttstls.heclouds.com"  # 加密接口地址
+PORT = "8883"                   # 加密端口
