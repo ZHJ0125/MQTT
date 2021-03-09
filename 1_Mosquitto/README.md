@@ -1,6 +1,6 @@
-# Mosiquitto实验
+# Mosquitto实验
 
-## 实验一：Mosiquitto安装
+## 实验一：Mosquitto安装
 
 在树莓派终端输入以下代码（树莓派默认密码为：`raspberry`）
 
@@ -170,7 +170,7 @@ mosquitto_pub -t "student/xx/test" -h "47.95.13.239" -p 1883 -u "student" -P "kk
 下面以iOS系统(MQTTool软件)为例，演示手机与树莓派互传数据的过程
 
 * 打开MQTTool软件
-* `Host` 填写 `47.92.13.239`
+* `Host` 填写 `47.95.13.239`
 * `Port` 填写 `1883`
 * `Client ID` 可以不填，使用默认生成的ID
 * `Username` 填写 `student`
@@ -189,14 +189,16 @@ mosquitto_pub -t "student/xx/test" -h "47.95.13.239" -p 1883 -u "student" -P "kk
 
 > 树莓派作为消息发布者，将以TopicA为主题的消息发布到服务器；手机作为消息接收者，从服务器订阅主题TopicA的消息。
 
+（！！注意：为了区分不同的学生，需要将每个学生发布/订阅的主题做区分，请将下面`TopicA/xx`中的`xx`换成自己电脑的序号）
+
 （1）首先手机端先开启订阅
 
 * 在MQTTool手机APP的底部选择`Subscribe`，进入订阅页面
-* `Topic (主题)` 填写 `TopicA`
+* `Topic (主题)` 填写 `TopicA/xx`
 * `QoS (服务质量)` 选择 `0`
 * 点击 `Subscribe` 订阅按钮
 
-订阅成功后，`Status` 会显示 `Subscribed to: TopicA`
+订阅成功后，`Status` 会显示 `Subscribed to: TopicA/xx`
 
 （2）在树莓派端发布一条消息
 
@@ -205,7 +207,7 @@ mosquitto_pub -t "student/xx/test" -h "47.95.13.239" -p 1883 -u "student" -P "kk
 （！！注意：执行该命令时，需要确保手机端处在订阅状态，手机熄屏后有可能就断开与服务器的连接了）
 
 ```sh
-mosquitto_pub -t "TopicA" -h "47.95.13.239" -p 1883 -u "student" -P "kkxxb401" -m "This is a message from RasppberryPi."
+mosquitto_pub -t "TopicA/xx" -h "47.95.13.239" -p 1883 -u "student" -P "kkxxb401" -m "This is a message from RaspberryPi."
 ```
 
 ![09_message_from_pi](image/09_message_from_pi_1.jpg)
@@ -220,21 +222,23 @@ mosquitto_pub -t "TopicA" -h "47.95.13.239" -p 1883 -u "student" -P "kkxxb401" -
 
 这样，来自树莓派的消息 `This is a message from RasppberryPi.` 就通过服务器转发到了手机上。
 
-下面可以仿照 `树莓派向手机传输数据`，实现 `手机向树莓派传输数据` 的过程。
+下面可以仿照 `树莓派向手机传输数据` 的过程，实现 `手机向树莓派传输数据`。
 
 ### 3.2 手机向树莓派传输数据
 
 > 手机作为消息发布者，将以`TopicB`为主题的消息发布到服务器；树莓派作为消息订阅者，从服务器订阅主题`TopicB`的消息。
 
+（！！注意：为了区分不同的学生，需要将每个学生发布/订阅的主题做区分，请将下面`TopicB/xx`中的`xx`换成自己电脑的序号）
+
 （1）首先树莓派先开启订阅
 
 ```sh
-mosquitto_sub -t "TopicB" -h "47.95.13.239" -p 1883 -u "student" -P "kkxxb401"
+mosquitto_sub -t "TopicB/xx" -h "47.95.13.239" -p 1883 -u "student" -P "kkxxb401"
 ```
 
 ![12_message_from_phone_1](image/12_message_from_phone_1.jpg)
 
-（2）手机端向服务器发布以`TopicB`为主题的消息`Hello,this is from Phone.`
+（2）手机端向服务器发布以`TopicB/xx`为主题的消息`Hello,this is from Phone.`
 
 ![13_message_from_phone_2](image/13_message_from_phone_2.png)
 
@@ -250,8 +254,8 @@ Mosquitto官方在它的服务器`test.mosquitto.org`上搭建了Mosquitto Broke
 
 课后可以自行测试以下内容：
 
-* `用手机APP连接test.mosquitto.org，实现消息发布和订阅`。
-* 用手机测试 `mosquitto_sub -h test.mosquitto.org -t "#"` 这条订阅指令，并解释为何会接收到`大量不同主题`的消息
+* 用手机APP连接`test.mosquitto.org`，实现消息发布和订阅。
+* 用手机测试 `mosquitto_sub -h test.mosquitto.org -t "#"` 这条订阅指令，并解释为何会接收到`大量不同主题`的消息。（可参考[通配符主题订阅](https://mosquitto.org/man/mosquitto-8.html)）
 
 ---
 
