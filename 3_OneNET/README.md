@@ -26,3 +26,29 @@
 | DEV_NAME   | "RaspberryPi"                                     |   设备名称        |
 | DEV_KEY    | "6NlxW8h95mhTsodULVvo8mx/X/Bf8up6AmSnyoFYDho="    |   设备Key        |
 | ACCESS_KET | "tg23t7tZgkW8MWudgiZ8R+Ih+TxPiCmSbjKzFuq31xE="    |   产品AccessKey  |
+
+
+# README
+
+## 安装paho-mqtt
+
+在树莓派的终端输入以下命令，检查环境
+
+```sh
+python3 -V      # 显示python3的版本
+pip3 -V         # 显示pip包管理工具的版本
+```
+
+输入以下命令安装paho-mqtt
+
+```sh
+pip3 install paho-mqtt
+```
+
+看到 `Successfully installed paho-mqtt-1.5.1` 说明安装成功
+
+实验过程需要编写一些代码，可以点击[链接]查看，或者使用以下指令下载代码
+
+```sh
+git clone 
+```
