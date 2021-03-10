@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # 2021-03-10
 
+import RPi.GPIO as GPIO
 import paho.mqtt.client as mqtt
 from urllib.parse import quote
 import time
@@ -22,8 +23,10 @@ ACCESS_KET = "tg23t7tZgkW8MWudgiZ8R+Ih+TxPiCmSbjKzFuq31xE="     # 产品AccessKe
 # 控制LED亮灭的函数
 def LED_Control(cmd):
     if(cmd == "b'ON'"):             # 开灯命令 [ON]
+        GPIO.output(11, GPIO.HIGH)
         ts_print("[Command] --> LED ON")
     elif(cmd == "b'OFF'"):          # 关灯命令 [OFF]
+        GPIO.output(11, GPIO.LOW)
         ts_print("[Command] --> LED OFF")
 
 # 用于生成Token的函数
@@ -109,6 +112,10 @@ def data(ds_id,value):
     return message
 
 if __name__ == '__main__':
+
+    # 配置树莓派GPIO引脚
+    GPIO.setmode(GPIO.BOARD)    # BOARD编号方式，基于插座引脚编号
+    GPIO.setup(11, GPIO.OUT)    # 输出模式
 
     # 配置MQTT连接信息
     client_id = DEV_NAME
