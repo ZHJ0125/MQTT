@@ -13,11 +13,11 @@ import hmac
 # PORT = "8883"                     # 加密端口
 HOST = "mqtts.heclouds.com"         # 未加密地址
 PORT = "1883"                       # 未加密端口
-PRO_ID = "407495"                   # 产品ID
-DEV_ID = "690805501"                # 设备ID
+PRO_ID = "407648"                   # 产品ID
+DEV_ID = "691289818"                # 设备ID
 DEV_NAME = "RaspberryPi"            # 设备名称
-DEV_KEY = "XTxOJG5WaD89cmQ6Yl8xQWkkWy5BbDVyRlByYGxyUnQ="        # 设备Key
-ACCESS_KET = "f/WWN59X1ePhP7phxaSa6LRSqRjKywsIbiASyPi4isY="     # 产品AccessKey
+DEV_KEY = "6NlxW8h95mhTsodULVvo8mx/X/Bf8up6AmSnyoFYDho="        # 设备Key
+ACCESS_KET = "tg23t7tZgkW8MWudgiZ8R+Ih+TxPiCmSbjKzFuq31xE="     # 产品AccessKey
 
 # 控制LED亮灭的函数
 def LED_Control(cmd):
