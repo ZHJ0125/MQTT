@@ -1,13 +1,16 @@
+# -*- coding: utf-8 -*-
+# 2021-03-10
+
 import base64
 import hmac
 import time
 from urllib.parse import quote
 
-PRO_ID = "407495"           # 产品ID
-DEV_ID = "690805501"        # 设备ID
-DEV_NAME = "RaspberryPi"    # 设备名
-KEY = "XTxOJG5WaD89cmQ6Yl8xQWkkWy5BbDVyRlByYGxyUnQ="        # 设备Key
-ACCESS_KET = "f/WWN59X1ePhP7phxaSa6LRSqRjKywsIbiASyPi4isY=" # AccessKey
+PRO_ID = "xxxxxxxxxxxxx"        # 产品ID
+DEV_ID = "xxxxxxxxxxxxx"        # 设备ID
+DEV_NAME = "xxxxxxxxxxx"        # 设备名
+KEY = "xxxxxxxxxxxxxxxx"        # 设备Key
+ACCESS_KET = "xxxxxxxxx"        # 产品AccessKey
 
 def token(_PRO_ID, _DEV_NAME, _KEY):
     version = '2018-10-31'
