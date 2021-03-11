@@ -1,34 +1,4 @@
-* 测试产品
-
-|     参数    |                      内容                         |       含义      |
-|------------|---------------------------------------------------|-----------------|
-| HOST       | "mqttstls.heclouds.com"                           |   加密地址       |
-| PORT       | "8883"                                            |   加密端口       |
-| HOST       | "mqtts.heclouds.com"                              |   未加密地址      |
-| PORT       | "1883"                                            |   未加密端口      |
-| PRO_ID     | "407495"                                          |   产品ID         |
-| DEV_ID     | "690805501"                                       |   设备ID         |
-| DEV_NAME   | "RaspberryPi"                                     |   设备名称        |
-| DEV_KEY    | "XTxOJG5WaD89cmQ6Yl8xQWkkWy5BbDVyRlByYGxyUnQ="    |   设备Key        |
-| ACCESS_KET | "f/WWN59X1ePhP7phxaSa6LRSqRjKywsIbiASyPi4isY="    |   产品AccessKey  |
-
-
-* 二次测试
-
-|     参数    |                      内容                         |       含义      |
-|------------|---------------------------------------------------|-----------------|
-| HOST       | "mqttstls.heclouds.com"                           |   加密地址       |
-| PORT       | "8883"                                            |   加密端口       |
-| HOST       | "mqtts.heclouds.com"                              |   未加密地址      |
-| PORT       | "1883"                                            |   未加密端口      |
-| PRO_ID     | "407648"                                          |   产品ID         |
-| DEV_ID     | "691289818"                                       |   设备ID         |
-| DEV_NAME   | "RaspberryPi"                                     |   设备名称        |
-| DEV_KEY    | "6NlxW8h95mhTsodULVvo8mx/X/Bf8up6AmSnyoFYDho="    |   设备Key        |
-| ACCESS_KET | "tg23t7tZgkW8MWudgiZ8R+Ih+TxPiCmSbjKzFuq31xE="    |   产品AccessKey  |
-
-
-# README
+# OneNET云平台实验
 
 ## 1. 准备工作
 
@@ -65,9 +35,9 @@ cd MQTT/3_OneNET/                               # 切换到代码目录
 
 ![01_clone](image/01_clone.jpg)
 
-## 2. 云平台注册和配置
+---
 
-云平台是指？？？？？？
+## 2. 云平台注册和配置
 
 常用的云平台有：[阿里云](https://cn.aliyun.com/)、[腾讯云](https://cloud.tencent.com/)、[华为云](https://www.huaweicloud.com/)、[机智云](https://www.gizwits.com/)、[OneNET](https://open.iot.10086.cn/) 等
 
@@ -116,11 +86,13 @@ cd MQTT/3_OneNET/                               # 切换到代码目录
 | access_key   |  产品概览页面           |
 | 设备ID        |  设备列表页面           |
 | 设备名称       |  设备列表页面           |
-| 设备key       | `设备列表页面` -> `详情` |
+| 设备key       |  设备列表页面 -> 详情    |
 
 可以把他们先记录下来，方便一会儿改程序
 
 现在云平台这边已经基本完成，接下来可以修改程序了
+
+---
 
 ## 3. 程序修改和运行
 
@@ -130,7 +102,7 @@ cd MQTT/3_OneNET/                               # 切换到代码目录
 
 双击打开 `04_OneNET_MQTT.py` 这个python文件
 
-在这个文件中，修改第17~22行的内容，对应你自己刚才记录的产品和设备信息
+在这个文件中，修改第17~21行的内容，对应你自己刚才记录的产品和设备信息
 
 其中的变量对应的含义如下
 
@@ -140,9 +112,11 @@ cd MQTT/3_OneNET/                               # 切换到代码目录
 | DEV_ID     | 设备ID          |
 | DEV_NAME   | 设备名称         |
 | DEV_KEY    | 设备Key         |
-| ACCESS_KET | 产品access_key   |
+| ACCESS_KET | 产品access_key  |
 
 修改完成后，可以运行该程序
+
+---
 
 ## 4. 云平台数据流
 
@@ -150,15 +124,15 @@ cd MQTT/3_OneNET/                               # 切换到代码目录
 
 打开OneNET物联网套件页面，点击 `设备列表` -> `数据流展示`
 
-在该页面可以看到由树莓派上传的数据流，其中有两个数据点 `random` 和 `distance`
+在该页面可以看到由树莓派上传的数据流，其中有两个数据流 `random` 和 `distance`
 
 ![05_data_point](image/05_data_point.jpg)
 
-点击数据点 `distance` 可以看到该数据点的历史数据
+点击数据流 `distance` 可以看到数据点的历史数据
 
 ![06_data_history](image/06_data_history.jpg)
 
-现在，这两个数据点 `random` 和 `distance` 都是由python随机生成的数据，我们可以修改程序，将之前 `树莓派GPIO` 所用到的传感器测距程序加到此程序里，实现传感器数据的上传。
+现在，这两个数据 `random` 和 `distance` 都是由python随机生成的数据，我们可以修改程序，将之前 `树莓派GPIO` 所用到的传感器测距程序加到此程序里，实现传感器数据的上传。
 
 ### 4.2 云平台下发指令
 
@@ -175,6 +149,8 @@ cd MQTT/3_OneNET/                               # 切换到代码目录
 ![08_terminal_command](image/08_terminal_command.jpg)
 
 同样的，在下发命令的内容框中填写 `OFF`，可以将LED关闭。
+
+---
 
 ## 5. 代码简析
 
@@ -194,7 +170,9 @@ DEV_KEY = "6NlxW8h95mhTsodULVvo8mx/X/Bf8up6AmSnyoFYDho="        # 设备Key
 ACCESS_KET = "tg23t7tZgkW8MWudgiZ8R+Ih+TxPiCmSbjKzFuq31xE="     # 产品AccessKey
 ```
 
-这些参数就是刚刚我们创建设备的参数信息，这些信息会被下面的函数所用到。
+这些参数就是刚刚我们创建设备的参数信息，这些信息会被下面的这些函数所用到。
+
+---
 
 ### 5.2 LED_Control函数
 
@@ -211,6 +189,8 @@ def LED_Control(cmd):
 
 * 功能：用来控制LED的亮灭
 * 解释：由云平台下发的控制指令作为参数传入该函数，函数体内通过判断不同的命令，调用GPIO库控制LED的亮灭。
+
+---
 
 ### 5.3 token函数
 
@@ -244,6 +224,8 @@ def token(_pid, dname, access_key):
 * 功能：生成密码
 * 解释：OneNET的MQTTS协议，要求客户端在连接时，用户名填写产品ID，而密码要由该平台提供的算法生成，这个token函数就是用来生成连接密码的。该函数可以在OneNET平台[开发文档](https://open.iot.10086.cn/doc/mqtt/book/manual/auth/python.html)页面找到。
 
+---
+
 ### 5.4 ts_print函数
 
 ```python
@@ -257,6 +239,8 @@ def ts_print(*args):
 * 功能：以带时间戳的格式输出
 * 解释：如果直接用print函数输出某个字符串，只会输出该字符串本身，而用这个ts_print函数输出，会在输出字符串前面增加当前时间。
 
+---
+
 ### 5.5 on_connect函数
 
 ```python
@@ -269,6 +253,8 @@ def on_connect(client, userdata, flags, rc):
 
 * 功能：显示客户端连接状态、订阅上传的数据流状态、订阅云平台的下发指令
 * 解释：这是一个回调函数，当服务器相应客户端的连接请求时，该函数会被触发执行。其中`rc`参数可以返回连接结果，`mqtt.connack_string(rc)`可以将连接结果转成语句的形式。下面两句`client.subscribe`函数，分别订阅了用于获取下发命令的`topic_cmd`主题，和用于回传服务器对客户端发布数据的响应结果的`topic_dp`主题，这两个主题的格式是由OneNET规定的，订阅这两个主题也是规定的流程。这一部分参见 [开发文档-接入实例-同步命令](https://open.iot.10086.cn/doc/mqtt/book/example/cmd.html)
+
+---
 
 ### 5.6 on_message函数
 
@@ -289,6 +275,8 @@ def on_message(client, userdata, msg):
 * 功能：接收并响应服务器的下发指令、调用LED控制函数
 * 解释：这是一个回调函数，当客户端接收到来自服务器发布的消息时，该函数会被触发。其中`msg`参数里会包含主题、消息内容等信息，通过类似结构体成员的方式可以解析出来进行显示。云平台下发的数据，如`ON`，就会被传入`LED_Control`函数，实现对LED的控制。之后，on_message函数会将对下发命令的响应结果发给云平台，这些响应就是我们在`下发指令`->`返回结果`中得到的内容。
 
+---
+
 ### 5.7 on_publish函数
 
 ```python
@@ -300,6 +288,8 @@ def on_publish(client, userdata, mid):
 
 * 功能：客户端调用publish函数时的回调函数
 * 解释：当客户端发布信息到代理服务器后，该函数被调用。该函数里面没有写什么有效的功能，只是显示一下回调信息。
+
+---
 
 ### 5.8 on_subscribe函数
 
@@ -313,6 +303,8 @@ def on_subscribe(client, obj, mid, granted_qos):
 * 功能：服务器响应客户端订阅请求时的回调函数
 * 解释：该函数里面没有写什么有效的功能，只是显示一下回调信息。
 
+---
+
 ### 5.9 on_disconnect函数
 
 ```python
@@ -323,6 +315,8 @@ def on_disconnect(client):
 
 * 功能：客户端与服务器断连时的回调函数
 * 解释：显示断开连接的提示信息，用于调试。
+
+---
 
 ### 5.10 data函数
 
@@ -346,7 +340,9 @@ def data(ds_id,value):
 ```
 
 * 功能：将上传的数据调整成规定的格式
-* 解释：由树莓派发布到服务器的数据，需要按照OneNET规定的格式，这里用了Json格式，其中`id`、`dp`和`v`是必须有的，分别表示数据点ID、数据点、数据值，其它参数详见开发手册。
+* 解释：由树莓派发布到服务器的数据，需要按照OneNET规定的格式，这里用了Json格式，其中`id`、`dp`和`v`是必须有的，分别表示数据点ID、数据点、数据值，其它参数详见开发手册。注意：这里的`distance`和`random`两组数据都是由python随机产生的，其中`distance`可以通过参数`value`设置。
+
+---
 
 ### 5.11 main函数
 
@@ -390,4 +386,47 @@ if __name__ == '__main__':
 ```
 
 * 功能：配置树莓派GPIO、配置MQTT连接信息、配置数据发布和订阅的主题、树莓派循环发布数据到OneNET
-* 解释：现在使用的是未加密的连接方式，如果使用加密方式，需要将133和134行取消注释，并修改对应的地址和端口。订阅主题的格式是按照OneNET规定的格式编写的，可参考[开发文档-topic簇](https://open.iot.10086.cn/doc/mqtt/book/device-develop/topics/introduce.html)。
+* 解释：现在使用的是未加密的连接方式，如果使用加密方式，需要将133和134行取消注释，并修改对应的地址和端口。订阅主题的格式是按照OneNET规定的格式编写的，可参考[开发文档-topic簇](https://open.iot.10086.cn/doc/mqtt/book/device-develop/topics/introduce.html)。可以通过修改`client.publish`函数中`payload`参数的值，实现对采集数据的上传。
+
+---
+
+## 6. 练习
+
+在`树莓派GPIO`实验中，我们已经可以使用超声波传感器检测距离信息了，现在大家可以利用上次的代码，结合本次实验，将树莓派采集的距离信息上传到OneNET平台。
+
+* 树莓派超声波传感器代码：[05_RaspiGPIO.py](05_RaspiGPIO.py)
+* 树莓派超声波传感器网页资料：[树莓派上使用HC-SR04超声波测距模块](https://shumeipai.nxez.com/2019/01/02/hc-sr04-ultrasonic-ranging-module-on-raspberry-pi.html)
+
+---
+
+## 7. 附录
+
+下面是我创建的产品和设备的参数信息
+
+* 测试产品
+
+|     参数    |                      内容                         |       含义      |
+|------------|---------------------------------------------------|-----------------|
+| HOST       | "mqttstls.heclouds.com"                           |   加密地址       |
+| PORT       | "8883"                                            |   加密端口       |
+| HOST       | "mqtts.heclouds.com"                              |   未加密地址      |
+| PORT       | "1883"                                            |   未加密端口      |
+| PRO_ID     | "407495"                                          |   产品ID         |
+| DEV_ID     | "690805501"                                       |   设备ID         |
+| DEV_NAME   | "RaspberryPi"                                     |   设备名称        |
+| DEV_KEY    | "XTxOJG5WaD89cmQ6Yl8xQWkkWy5BbDVyRlByYGxyUnQ="    |   设备Key        |
+| ACCESS_KET | "f/WWN59X1ePhP7phxaSa6LRSqRjKywsIbiASyPi4isY="    |   产品AccessKey  |
+
+* 二次测试
+
+|     参数    |                      内容                         |       含义      |
+|------------|---------------------------------------------------|-----------------|
+| HOST       | "mqttstls.heclouds.com"                           |   加密地址       |
+| PORT       | "8883"                                            |   加密端口       |
+| HOST       | "mqtts.heclouds.com"                              |   未加密地址      |
+| PORT       | "1883"                                            |   未加密端口      |
+| PRO_ID     | "407648"                                          |   产品ID         |
+| DEV_ID     | "691289818"                                       |   设备ID         |
+| DEV_NAME   | "RaspberryPi"                                     |   设备名称        |
+| DEV_KEY    | "6NlxW8h95mhTsodULVvo8mx/X/Bf8up6AmSnyoFYDho="    |   设备Key        |
+| ACCESS_KET | "tg23t7tZgkW8MWudgiZ8R+Ih+TxPiCmSbjKzFuq31xE="    |   产品AccessKey  |
