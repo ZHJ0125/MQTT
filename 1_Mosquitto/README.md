@@ -2,6 +2,29 @@
 
 ## 实验一：Mosquitto安装
 
+### 1.1 更换软件源
+
+首先更换树莓派软件源，在树莓派终端输入以下命令
+
+```sh
+sudo mousepad /etc/apt/sources.list
+```
+
+在打开的文件中，使用 `#` 将第一行注释掉，然后在末尾添加以下两行语句
+
+```sh
+deb http://mirrors.aliyun.com/raspbian/raspbian/ buster main non-free contrib
+deb-src http://mirrors.aliyun.com/raspbian/raspbian/ buster main non-free contrib
+```
+
+修改完成的效果如下图所示：
+
+![00_source](image/00_source.jpg)
+
+修改完成后，保存并退出。
+
+### 1.2 安装Mosquitto
+
 在树莓派终端输入以下代码（树莓派默认密码为：`raspberry`）
 
 ```sh
