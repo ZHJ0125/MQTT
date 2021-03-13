@@ -401,6 +401,8 @@ if __name__ == '__main__':
 
 ## 7. 附录
 
+### 7.1 产品设备参数
+
 下面是我创建的产品和设备的参数信息
 
 * 测试产品
@@ -430,6 +432,12 @@ if __name__ == '__main__':
 | DEV_NAME   | "RaspberryPi"                                     |   设备名称        |
 | DEV_KEY    | "6NlxW8h95mhTsodULVvo8mx/X/Bf8up6AmSnyoFYDho="    |   设备Key        |
 | ACCESS_KET | "tg23t7tZgkW8MWudgiZ8R+Ih+TxPiCmSbjKzFuq31xE="    |   产品AccessKey  |
+
+### 7.2 树莓派引脚图
+
+![09_rpi_gpio](image/09_rpi_gpio.png)
+
+![10_all_rpi_gpio](image/10_all_rpi_gpio.jpg)
 
 ---
 
