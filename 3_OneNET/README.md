@@ -439,6 +439,10 @@ if __name__ == '__main__':
 
 ![10_all_rpi_gpio](image/10_all_rpi_gpio.jpg)
 
+### 7.3 HTTP方式上传
+
+[NodeMCU+OneNET HTTP方式 温湿度上传和LED控制](https://blog.csdn.net/ZHJ123CSDN/article/details/114367337)
+
 ---
 
 End
